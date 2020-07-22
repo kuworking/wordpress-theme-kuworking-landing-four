@@ -1,0 +1,15 @@
+{
+  "name": "kuworking/wordpress-theme-kuworking-landing-one",
+  "description": "wordpress theme kuworking landing one",
+  "type":"wordpress-theme",
+  "minimum-stability" : "stable",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+	  "timber/timber": "1.*"
+  }
+}
