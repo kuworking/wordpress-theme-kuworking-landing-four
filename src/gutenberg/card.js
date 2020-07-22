@@ -7,20 +7,16 @@ import { HallGutenberg } from '../components/hall'
 // change the theme folder name if needed
 const theme_link = '/wp-content/themes/wordpress-theme-kuworking-landing-two/static'
 
-
-registerBlockType('wp-theme-kuworking-landing-one/landing', {
+registerBlockType('wp-theme-kuworking-landing-two/landing', {
   title: 'Kuworking Landing',
   icon: 'format-aside',
   category: 'kuworking',
   attributes: {
-    header_h1: { type: 'string', default: '' },
-    header_h2_0: { type: 'string', default: '' },
-    header_h2_1: { type: 'string', default: '' },
-    image_0: { type: 'string', default: '' },
-    image_1: { type: 'string', default: '' },
     text_0: { type: 'string', default: '' },
     text_1: { type: 'string', default: '' },
     text_2: { type: 'string', default: '' },
+    text_3: { type: 'string', default: '' },
+    image_0: { type: 'string', default: '' },
     theme_link: { type: 'string', default: '' },
   },
   edit: ({ attributes, setAttributes, className }) => {
@@ -32,28 +28,33 @@ registerBlockType('wp-theme-kuworking-landing-one/landing', {
         alt="emoji"
       />
     )
-    const [space_1, setSpace_1] = useState()
+    const [space, setSpace] = useState({})
     useEffect(() => {
       const initialAttributes = {
-        header_h1: 'Landing ONE',
-        header_h2_0: 'WordPress Theme',
-        header_h2_1: 'Written in React',
-        image_0: '/image.jpg',
-        image_1: '/icon.svg',
-        text_0: 'Lorem ipsum dolor sit amet consectetur adipiscing elit mauris',
+        text_0: 'Landing TWO',
         text_1: 'Luctus aliquet nascetur potenti tortor',
         text_2:
           'Velit etiam dis libero consequat class a sociis fames, habitant varius porta conubia mi id vehicula morbi lectus, porttitor mus cum viverra tellus convallis gravida',
+        text_3:
+          'Velit etiam dis libero consequat class a sociis fames, habitant varius porta conubia mi id vehicula morbi lectus, porttitor mus cum viverra tellus convallis gravida',
+        image_0: '/icon.svg',
         theme_link: theme_link,
       }
       const defaultAttributes = {}
       for (const a in attributes) defaultAttributes[a] = attributes[a] || initialAttributes[a]
       setAttributes(defaultAttributes)
 
-      const start = document.getElementById('first_block_end').offsetTop
-      const end = document.getElementById('second_block_start').offsetTop
-      setSpace_1(end - start)
-    }, [])
+      console.log(document.getElementById('block_0').offsetTop)
+      console.log(document.getElementById('block_1').offsetTop)
+      console.log(document.getElementById('block_2').offsetTop)
+      console.log(document.getElementById('block_3').offsetTop)
+
+      const diff = i =>
+        document.getElementById('block_' + (i + 1) + '_start').offsetTop -
+        document.getElementById('block_' + i).offsetTop
+
+      setSpace({ block_0: diff(0), block_1: diff(1), block_2: diff(2), block_3: diff(3) })
+    }, [space.block_3])
 
     return (
       <Gutenberg>
@@ -61,45 +62,59 @@ registerBlockType('wp-theme-kuworking-landing-one/landing', {
         <Grid>
           <div>
             <Icon />
-            Header
+            Text 1
           </div>
-          <Input
-            placeholder="Add text..."
+          <Textarea
+            txa_height="200px"
+            placeholder="Add text"
             className={className}
-            value={attributes['header_h1']}
-            onChange={e => onChangeContent(e, 'header_h1')}
+            value={attributes['text_0']}
+            onChange={e => onChangeContent(e, 'text_0')}
           />
+          <div id="block_0"></div>
+          <div style={{ marginTop: space.block_0 + 'px' }}></div>
+
           <div>
             <Icon />
-            SubHeader 1
+            Text 2
           </div>
-          <Input
-            placeholder="Add text..."
+          <Textarea
+            txa_height="200px"
+            placeholder="Add text"
             className={className}
-            value={attributes['header_h2_0']}
-            onChange={e => onChangeContent(e, 'header_h2_0')}
+            value={attributes['text_1']}
+            onChange={e => onChangeContent(e, 'text_1')}
           />
+          <div id="block_1"></div>
+          <div style={{ marginTop: space.block_1 + 'px' }}></div>
+
           <div>
             <Icon />
-            SubHeader 2
+            Text 3
           </div>
-          <Input
-            placeholder="Add text..."
+          <Textarea
+            txa_height="200px"
+            placeholder="Add text"
             className={className}
-            value={attributes['header_h2_1']}
-            onChange={e => onChangeContent(e, 'header_h2_1')}
+            value={attributes['text_2']}
+            onChange={e => onChangeContent(e, 'text_2')}
           />
-          <div id="first_block_end" style={{ marginTop: space_1 + 'px' }}></div>
+          <div id="block_2"></div>
+          <div style={{ marginTop: space.block_2 + 'px' }}></div>
+
           <div>
             <Icon />
-            Images from the /static folder - Background image
+            Text 4
           </div>
-          <Input
-            placeholder="Add image url"
+          <Textarea
+            txa_height="200px"
+            placeholder="Add text"
             className={className}
-            value={attributes['image_0']}
-            onChange={e => onChangeContent(e, 'image_0')}
+            value={attributes['text_3']}
+            onChange={e => onChangeContent(e, 'text_3')}
           />
+          <div id="block_3"></div>
+          <div style={{ marginTop: space.block_3 + 'px' }}></div>
           <div>
             <Icon />
             Images from the /static folder - Astronaut image
@@ -107,40 +122,8 @@ registerBlockType('wp-theme-kuworking-landing-one/landing', {
           <Input
             placeholder="Add image url"
             className={className}
-            value={attributes['image_1']}
-            onChange={e => onChangeContent(e, 'image_1')}
-          />
-          <div>
-            <Icon />
-            First text
-          </div>
-          <Textarea
-            placeholder="Add text"
-            className={className}
-            value={attributes['text_0']}
-            onChange={e => onChangeContent(e, 'text_0')}
-          />
-          <div>
-            <Icon />
-            Second text
-          </div>
-          <Textarea
-            txa_height="50px"
-            placeholder="Add text"
-            className={className}
-            value={attributes['text_1']}
-            onChange={e => onChangeContent(e, 'text_1')}
-          />
-          <div>
-            <Icon />
-            Third text
-          </div>
-          <Textarea
-            txa_height="300px"
-            placeholder="Add text"
-            className={className}
-            value={attributes['text_2']}
-            onChange={e => onChangeContent(e, 'text_2')}
+            value={attributes['image_0']}
+            onChange={e => onChangeContent(e, 'image_0')}
           />
         </Grid>
       </Gutenberg>
@@ -151,7 +134,7 @@ registerBlockType('wp-theme-kuworking-landing-one/landing', {
 
 const Gutenberg = styled.div`
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr 1fr;
   border: 2px solid #ffd9d4;
   padding: 10px;
   border-radius: 5px;

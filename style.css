@@ -4,7 +4,7 @@
  * Author: Kuworking
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Handlee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Londrina+Solid&display=swap');
 
 body {
   overflow-y: scroll;
@@ -15,10 +15,11 @@ body {
 #wp_theme_kuworking {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 /* For gutenberg styles */
-.wp-block[data-type="wp-theme-kuworking-landing-one/landing"]{
+.wp-block[data-type="wp-theme-kuworking-landing-two/landing"]{
   max-width: 100%;
 }
 
