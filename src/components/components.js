@@ -1,13 +1,51 @@
-const { useRef } = wp.element
+const { useState, useEffect } = wp.element
 import styled from '@emotion/styled'
 
 export const Components = ({ attributes }) => {
   const { theme_link, text_0, text_1, text_2, text_3, image_0 } = attributes
 
   const stickValue = 30
-  const stick = [...Array(5)].map((el, i) => i*stickValue)
+  const stick = [...Array(5)].map((el, i) => i * stickValue)
+
+  const backgrounds = ['#fff', '#fbadbb', '#afc9de', '#b092d8', '#85848a']
+  const [background, setBackground] = useState({ position: 0, color: backgrounds[0] })
+
+  useEffect(() => {
+    // set the initial position since it will change when they stick to the top
+    const offSet = 500
+    const initial_positions = [
+      parseInt(document.getElementById('block_0_start').offsetTop + offSet),
+      parseInt(document.getElementById('block_1_start').offsetTop - offSet),
+      parseInt(document.getElementById('block_2_start').offsetTop - offSet),
+      parseInt(document.getElementById('block_3_start').offsetTop - offSet),
+      parseInt(document.getElementById('block_4_start').offsetTop - offSet),
+    ]
+
+    let recreated_background = background
+    window.addEventListener('scroll', e => {
+      const position =
+        window.scrollY > initial_positions[4]
+          ? 4
+          : window.scrollY > initial_positions[3]
+          ? 3
+          : window.scrollY > initial_positions[2]
+          ? 2
+          : window.scrollY > initial_positions[1]
+          ? 1
+          : window.scrollY >= initial_positions[0]
+          ? 0
+          : 0
+
+      if (recreated_background.position !== position) {
+        setBackground({ position: position, color: backgrounds[position] })
+        // the state is not available within this scope, so I recreate it here
+        recreated_background = { position: position, color: backgrounds[position] }
+      }
+    })
+  }, [])
+
   return (
-    <>
+    <Background background={background}>
       <Div onClick={() => (window.location = '/')} bg="#f3ba51" stick={stick[0]} id="block_0_start">
         <h1>{text_0}</h1>
       </Div>
@@ -26,11 +64,21 @@ export const Components = ({ attributes }) => {
         </Img>
       </Div>
       <Space />
-    </>
+    </Background>
   )
 }
 
 const q = px => `@media (min-width: ${px}px)`
+
+const Background = styled.div`
+  background: ${props => props.background.color};
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background 0.3s ease-in;
+  will-change: background;
+`
 
 const Space = styled.div`
   margin-bottom: 500px;
