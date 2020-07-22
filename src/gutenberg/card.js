@@ -44,11 +44,6 @@ registerBlockType('wp-theme-kuworking-landing-two/landing', {
       for (const a in attributes) defaultAttributes[a] = attributes[a] || initialAttributes[a]
       setAttributes(defaultAttributes)
 
-      console.log(document.getElementById('block_0').offsetTop)
-      console.log(document.getElementById('block_1').offsetTop)
-      console.log(document.getElementById('block_2').offsetTop)
-      console.log(document.getElementById('block_3').offsetTop)
-
       const diff = i =>
         document.getElementById('block_' + (i + 1) + '_start').offsetTop -
         document.getElementById('block_' + i).offsetTop
