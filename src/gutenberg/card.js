@@ -7,7 +7,7 @@ import { HallGutenberg } from '../components/hall'
 // change the theme folder name if needed
 const theme_link = '/wp-content/themes/wordpress-theme-kuworking-landing-four/static'
 
-registerBlockType('wp-theme-kuworking-landing-two/landing', {
+registerBlockType('wp-theme-kuworking-landing-four/landing', {
   title: 'Kuworking Landing',
   icon: 'format-aside',
   category: 'kuworking',

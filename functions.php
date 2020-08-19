@@ -85,7 +85,7 @@ class StarterSite extends Timber\Site
             function () {
                 $asset_file = include (get_template_directory() . '/build/card.asset.php');
                 wp_enqueue_script(
-                    'wp-theme-kuworking-landing-two',
+                    'wp-theme-kuworking-landing-four',
                     get_template_directory_uri() . '/build/card.js',
                     $asset_file['dependencies'],
                     $asset_file['version']
@@ -117,8 +117,8 @@ class StarterSite extends Timber\Site
             function () {
                 if (isset($_GET['activated']) && is_admin()) {
                     $new_page_title = 'Home';
-                    $new_page_content = '<!-- wp:wp-theme-kuworking-landing-two/landing {"placeholder":""} -->
-                    <!-- /wp:wp-theme-kuworking-landing-two/landing -->';
+                    $new_page_content = '<!-- wp:wp-theme-kuworking-landing-four/landing {"placeholder":""} -->
+                    <!-- /wp:wp-theme-kuworking-landing-four/landing -->';
                     $new_page_template = '';
 
                     $page_check = get_page_by_title($new_page_title);

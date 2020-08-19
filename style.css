@@ -1,6 +1,6 @@
 /*
- * Theme Name: wp-theme-kuworking-landing-two
- * Description: wp-theme-kuworking-landing-two
+ * Theme Name: wp-theme-kuworking-landing-four
+ * Description: wp-theme-kuworking-landing-four
  * Author: Kuworking
 */
 
@@ -19,7 +19,7 @@ body {
 }
 
 /* For gutenberg styles */
-.wp-block[data-type="wp-theme-kuworking-landing-two/landing"]{
+.wp-block[data-type="wp-theme-kuworking-landing-four/landing"]{
   max-width: 100%;
 }
 
