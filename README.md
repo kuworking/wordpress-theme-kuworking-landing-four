@@ -1,10 +1,10 @@
-# Kuworking THEME wordpress-theme-kuworking-landing-two
+# Kuworking THEME wordpress-theme-kuworking-landing-four
 
 WordPress theme written in React and @emotion
 
 # Usage
 
-- Download the zip `wordpress-theme-kuworking-landing-two.zip`
+- Download the zip `wordpress-theme-kuworking-landing-four.zip`
 - Upload to your WordPress installation
 - Activate it
 - Go to Pages, open `Home` and change text

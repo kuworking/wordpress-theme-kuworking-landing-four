@@ -1,7 +1,7 @@
 {
-  "name": "wordpress-theme-kuworking-landing-two",
+  "name": "wordpress-theme-kuworking-landing-four",
   "version": "0.0.2",
-  "description": "wordpress-theme-kuworking-landing-two",
+  "description": "wordpress-theme-kuworking-landing-four",
   "main": "index.js",
   "author": "kuworking.com",
   "license": "ISC",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kuworking/wordpress-theme-kuworking-landing-two.git"
+    "url": "https://github.com/kuworking/wordpress-theme-kuworking-landing-four.git"
   },
   "devDependencies": {
     "@wordpress/scripts": "10.0.0",
